@@ -1,5 +1,5 @@
 """
-    WebsocketsAPI
+    DiffusionConnect
     Copyright (C) 2023 Zakhar Bengart
 
     This program is free software: you can redistribute it and/or modify
@@ -16,31 +16,12 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
     Description:
-        Service to work with async websockets
+        Config for DifConnect
 
     Author:
         Zakhar Bengart
 """
-import os
-import argparse
-from api import run_socket
 
-def create_parser():
-    parser = argparse.ArgumentParser(
-        prog='main', 
-        usage='%(prog)s [options]')
-    subparser = parser.add_subparsers(dest='command')
-    get = subparser.add_parser('get', help='Get information from Websockets API')
-    get.add_argument('--url', type=str, help='URL from where get information')
-    return parser
-
-def main():
-    parser = create_parser()
-    args = parser.parse_args()
-    if args.command == 'get':
-        run_socket()
-    else:
-        print("Not enough arguments, '--help' for more info")
-
-if __name__ == "__main__":
-    main()
+SERVER_URL = 'wss://diffusion.oddschecker.com'
+BOOKMAKERS = "B3|SK|PP|WH|EE|FB|VC|CE|UN|SX|FR|RK|BY|OE|DP|SI|LS|QN|WA|LD|N4|RM|VT|TD|BF|MK|MA"
+RACE_URL = "https://www.oddschecker.com/horse-racing/will-rogers-downs/20:05/winner"
