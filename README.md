@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="img/logo.png" alt=" The Queenthine Font" />
+  <img src="https://user-images.githubusercontent.com/101948294/226764824-861b4d80-bbb0-4455-8447-5c515e881181.png" alt=" The Queenthine Font" />
 </p>
 
 <p align="center">
