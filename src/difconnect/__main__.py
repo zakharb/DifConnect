@@ -45,6 +45,8 @@ def create_parser():
     subparser = parser.add_subparsers(dest='command')
     get = subparser.add_parser('get', help='Get information from Websockets API')
     get.add_argument('--url', type=str, help='URL from where get information')
+    get.add_argument('--bookmakers', type=str, help='Bookmakers string like B3|SK|PP...')
+    get.add_argument('--race-url', type=str, help='Race URL to parse')
     return parser
 
 if __name__ == "__main__":
@@ -55,12 +57,11 @@ if __name__ == "__main__":
         topic_path = ""
         horse_names = ""
         while not horse_names or not topic_path:
-            if args.url:
-                race_url = args.url
-            else:
-                race_url = RACE_URL
+            race_url = args.url if args.url else RACE_URL
+            bookmakers = args.bookmakers if args.bookmakers else BOOKMAKERS
+            server_url = args.server_url if args.server_url else SERVER_URL
             soup = scrape_url(race_url)
-            topic_path = find_topic_path(soup, BOOKMAKERS)
+            topic_path = find_topic_path(soup, bookmakers)
             print(f'[+] Found topic_path: {topic_path}')
             horse_names = find_horse_names(soup)
             print(f'[+] Found horse_names: {horse_names}')
@@ -68,6 +69,6 @@ if __name__ == "__main__":
                 print('[-] Can not scrape data, trying one more time...')
                 sleep(1)
         print('[*] Starting dif server to retrieve data')
-        asyncio.run(run_server(SERVER_URL, horse_names, topic_path))
+        asyncio.run(run_server(server_url, horse_names, topic_path))
     else:
         print("Not enough arguments, '--help' for more info")
