@@ -21,7 +21,8 @@
     Author:
         Zakhar Bengart
 """
+import os 
 
-SERVER_URL = 'wss://diffusion.oddschecker.com'
-BOOKMAKERS = "B3|SK|PP|WH|EE|FB|VC|CE|UN|SX|FR|RK|BY|OE|DP|SI|LS|QN|WA|LD|N4|RM|VT|TD|BF|MK|MA"
-RACE_URL = "https://www.oddschecker.com/horse-racing/will-rogers-downs/20:05/winner"
+SERVER_URL = os.getenv("SERVER_URL", "")
+BOOKMAKERS = os.getenv("BOOKMAKERS", "")
+RACE_URL = os.getenv('RACE_URL', "")

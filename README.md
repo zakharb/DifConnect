@@ -34,12 +34,19 @@ pip install difconnect
 ```
 ## :purple_square: Usage
 
-Set up `config.py` file for parameters
-
 Run service with arguments:
 - `get` to get information from server
+- add arguments to run for specific url, race etc
 
 ## :purple_square: Deployment
+
+Set up `.env` file for parameters
+
+```
+SERVER_URL=wss://diffusion.some_site.com
+BOOKMAKERS=AA|BB|CC
+RACE_URL=https://www.some_site.com/
+```
 
 Edit Dockerfile and spicify arguments to run service
 
@@ -50,7 +57,7 @@ docker build -t difconnect .
 
 Run image
 ```
-docker run -it difconnect
+docker run -it --env-file .env difconnect
 ```
 
 ## :purple_square: Versioning
