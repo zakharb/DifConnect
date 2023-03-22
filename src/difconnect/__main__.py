@@ -26,9 +26,9 @@ import argparse
 import asyncio
 from time import sleep
 
-from scraper import scrape_url, find_topic_path, find_horse_names
-from dif import run_server
-from config import SERVER_URL, BOOKMAKERS, RACE_URL
+from difconnect.scraper import scrape_url, find_topic_path, find_horse_names
+from difconnect.dif import run_server
+from difconnect.config import SERVER_URL, BOOKMAKERS, RACE_URL
 
 def print_logo():
     print("""
